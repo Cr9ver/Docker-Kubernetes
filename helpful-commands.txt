@@ -7,6 +7,7 @@ docker kill : kill(stop) container immediately
 docker exec -it $conatinerid sh : get full terminal access to conatiner 
 docker exec -it #containerid $command : execute command on the container
 docker run -it $containername sh - start up conatiner and attach shell 
+docker build -f $filename :  for specifying docker file to be built
 
 
 # Docker Compose
