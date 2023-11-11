@@ -1,3 +1,4 @@
+# Docker
 docker ps : view running containers
 docker system prune : remove unused data 
 docker run : run container
@@ -6,3 +7,10 @@ docker kill : kill(stop) container immediately
 docker exec -it $conatinerid sh : get full terminal access to conatiner 
 docker exec -it #containerid $command : execute command on the container
 docker run -it $containername sh - start up conatiner and attach shell 
+
+
+# Docker Compose
+docker compose --build - build and start container
+docker compose up -d - start containers
+docker compose down - stop containers
+docker compose ps - view running containers (ensure it's running from the direcotry where docker-compose file is )
