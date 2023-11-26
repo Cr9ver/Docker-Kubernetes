@@ -15,3 +15,19 @@ docker compose --build - build and start container
 docker compose up -d - start containers
 docker compose down - stop containers
 docker compose ps - view running containers (ensure it's running from the direcotry where docker-compose file is )
+
+
+
+# Kubernetes
+kubectl apply -f $filename - create 
+kubectl get pods - list running pods
+minikube ip - view ip is making use of minikube
+kubectl get svc or kubectl get servies - view services
+kubectl descrivbe $object-type $object-name - view information regarding specific object
+kubectl get $objectname -o wide - get more information about the object
+kubectl set image $objecttype/$objectname $containername=$imagename - set image imperatively
+kubectl get storageclass- see options kubernetes has to create a PV(persistent volume)
+kubectl describe storageclass - view more infor about PV
+kubectl get pv - get persitent volumes(pv)
+kubectl get pvc - get pvc
+kubectl get services -A - view all services from all namespaces
