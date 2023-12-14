@@ -23,7 +23,7 @@ kubectl apply -f $filename - create
 kubectl get pods - list running pods
 minikube ip - view ip is making use of minikube
 kubectl get svc or kubectl get servies - view services
-kubectl descrivbe $object-type $object-name - view information regarding specific object
+kubectl describe $object-type $object-name - view information regarding specific object
 kubectl get $objectname -o wide - get more information about the object
 kubectl set image $objecttype/$objectname $containername=$imagename - set image imperatively
 kubectl get storageclass- see options kubernetes has to create a PV(persistent volume)
