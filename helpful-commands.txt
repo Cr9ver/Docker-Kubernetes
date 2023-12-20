@@ -31,3 +31,4 @@ kubectl describe storageclass - view more infor about PV
 kubectl get pv - get persitent volumes(pv)
 kubectl get pvc - get pvc
 kubectl get services -A - view all services from all namespaces
+kubectl get pods -n kube-system - view namespace for kube-system
