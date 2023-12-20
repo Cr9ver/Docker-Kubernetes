@@ -32,3 +32,7 @@ kubectl get pv - get persitent volumes(pv)
 kubectl get pvc - get pvc
 kubectl get services -A - view all services from all namespaces
 kubectl get pods -n kube-system - view namespace for kube-system
+kubectl delete pods -all - delete all pods
+kubectl scale deployment $deployment --replicas=5 - scale replicas to 5 for deployment
+kubectl get pods --namespace=<your-namespace> -- view pods in a particular namespace
+kubectl edit $objectname - to edit object from file
