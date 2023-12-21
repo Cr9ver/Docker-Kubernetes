@@ -37,3 +37,14 @@ kubectl scale deployment $deployment --replicas=5 - scale replicas to 5 for depl
 kubectl get pods --namespace=<your-namespace> -- view pods in a particular namespace
 kubectl edit $objectname - to edit object from file
 kubectl get all - view all created resources
+kubectl get rs - view replicasets
+
+
+Declarative kubectl commands 
+kubectl run nginx --image=nginx --dry-run=client -o yaml - Generate POD Manifest YAML file (-o yaml). Don't create it(--dry-run)
+kubectl create deployment --image=nginx nginx --dry-run=client -o yaml - generate yaml 
+kubectl create deployment --image=nginx nginx --dry-run=client -o yaml > nginx-deployment.yaml - Generate Deployment YAML file (-o yaml). Don’t create it(–dry-run) and save it to a file.
+
+
+IMPERATIVE EXAMPLE !!!!
+kubectl create deployment --image=httpd:2.4-alpine httpd-frontend --replicas= - creates deployment with image as httpd:2.4-alpine, name as httpd-frontend and 3 replicas
