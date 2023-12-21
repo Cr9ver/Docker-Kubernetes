@@ -36,3 +36,4 @@ kubectl delete pods -all - delete all pods
 kubectl scale deployment $deployment --replicas=5 - scale replicas to 5 for deployment
 kubectl get pods --namespace=<your-namespace> -- view pods in a particular namespace
 kubectl edit $objectname - to edit object from file
+kubectl get all - view all created resources
