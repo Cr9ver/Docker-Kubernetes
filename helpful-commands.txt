@@ -38,13 +38,28 @@ kubectl get pods --namespace=<your-namespace> -- view pods in a particular names
 kubectl edit $objectname - to edit object from file
 kubectl get all - view all created resources
 kubectl get rs - view replicasets
+kubectl get namespace - to view namespace
+kubectl get ns - view namespaces
+kubectl get pods --namespace=$name - view pods in specific namespace
+kubectl get pods -n=$name - view pods in specific namespace
 
 
-Declarative kubectl commands 
+IMPERATIVE kubectl commands 
 kubectl run nginx --image=nginx --dry-run=client -o yaml - Generate POD Manifest YAML file (-o yaml). Don't create it(--dry-run)
 kubectl create deployment --image=nginx nginx --dry-run=client -o yaml - generate yaml 
 kubectl create deployment --image=nginx nginx --dry-run=client -o yaml > nginx-deployment.yaml - Generate Deployment YAML file (-o yaml). Don’t create it(–dry-run) and save it to a file.
+kubectl run redis --image=redis -n=dev - created redis pod running in finance namespace (create pod)
+kubectl expose deployment $deployment-name --port 80 - create service for deployment 
+kubectl edit deployment $deployment-name - edit deployment
+kubectl replace -f file.yaml 
+kubectl scale deployment $deploymentname--replicas=5 - scale deployment replicas to 5
 
 
 IMPERATIVE EXAMPLE !!!!
 kubectl create deployment --image=httpd:2.4-alpine httpd-frontend --replicas= - creates deployment with image as httpd:2.4-alpine, name as httpd-frontend and 3 replicas
+kubectl run redis --labels=tier=db --image=redis:alpine --dry-run=client -o yaml - output yaml to create redis pod with label
+kubectl create deployment webapp --image=kodekloud/webapp-color --replicas=3 --dry-run=client -o yaml - ouput yaml for deployment
+kubectl run custom-nginx --image=nginx --port=8080  - create nginx pod and expose on port 8080 
+kubectl create ns dev-ns - create namespace called dev-ns
+kubectl scale deployment nginx --replicas=4 - scale replias of deployment called nginx
+kubectl expose pod redis --port=6379 --name redis-service --dry-run=client -o yaml - Create a Service named redis-service of type ClusterIP to expose pod redis on port 6379
