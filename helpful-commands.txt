@@ -8,6 +8,7 @@ docker exec -it $conatinerid sh : get full terminal access to conatiner
 docker exec -it #containerid $command : execute command on the container
 docker run -it $containername sh - start up conatiner and attach shell 
 docker build -f $filename :  for specifying docker file to be built
+docker logs $container - view docker logs
 
 
 # Docker Compose
@@ -47,6 +48,8 @@ kubectl get all --selector env=dev,bu=tech,mu=red - example of using selector
 kubectl get pods -o wide - view more info about pods
 watch kubectl get pods - see status of pod realtime
 kubectl get daemonsets - command to view daemon sets
+kubectl get pods --watch - view pos in realtime
+kubectl logs $podname - to view logs for the pod -f option to view in real time
 
 ###taint
 kubectl taint nodes $node-name key=value:taint-effect - command to taint node

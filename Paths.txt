@@ -1,0 +1,2 @@
+Kubelet config path
+/vat/lib/kubelet
