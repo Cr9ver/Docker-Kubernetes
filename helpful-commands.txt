@@ -42,7 +42,23 @@ kubectl get namespace - to view namespace
 kubectl get ns - view namespaces
 kubectl get pods --namespace=$name - view pods in specific namespace
 kubectl get pods -n=$name - view pods in specific namespace
+kubectl get pods --selector $label = view podswith specific labels
+kubectl get all --selector env=dev,bu=tech,mu=red - example of using selector
+kubectl get pods -o wide - view more info about pods
+watch kubectl get pods - see status of pod realtime
+kubectl get daemonsets - command to view daemon sets
 
+###taint
+kubectl taint nodes $node-name key=value:taint-effect - command to taint node
+kubectl taint nodes $node-name key=value:taint-effect- - command to untaint node (-) at the end
+taint effects - NoSchedule
+                PreferNoSchedule
+                NoExecute
+            
+
+
+### nodes
+kubectl label nodes $node-name $key=$value - command to label nodes
 
 IMPERATIVE kubectl commands 
 kubectl run nginx --image=nginx --dry-run=client -o yaml - Generate POD Manifest YAML file (-o yaml). Don't create it(--dry-run)
