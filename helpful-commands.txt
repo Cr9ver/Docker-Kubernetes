@@ -50,6 +50,15 @@ watch kubectl get pods - see status of pod realtime
 kubectl get daemonsets - command to view daemon sets
 kubectl get pods --watch - view pos in realtime
 kubectl logs $podname - to view logs for the pod -f option to view in real time
+kubectl rollout status deployment/$deployment-name - see status of rollout
+kubectl rollout history deployment/$deployment-name - view rollout history of deployment
+kubect rollout undo deployment/$deployment-name - undo rollout of deployment
+kubectl replace --force -f $filepath - force replacement
+kubectl get configmaps - view configmaps
+kubectl describe secrets - describe secret
+kubectl get secrets - view secrets
+kubectl get secret $secret-name -o yaml - view secret value
+kubectl exec -it $podname sh - log into pod
 
 ###taint
 kubectl taint nodes $node-name key=value:taint-effect - command to taint node
@@ -72,6 +81,10 @@ kubectl expose deployment $deployment-name --port 80 - create service for deploy
 kubectl edit deployment $deployment-name - edit deployment
 kubectl replace -f file.yaml 
 kubectl scale deployment $deploymentname--replicas=5 - scale deployment replicas to 5
+kubectl create configmap $config-name --from-literal=$key=$value
+kubectl create configmap $config-name --from-file=<path-to-file>
+kubectl create secret generic $secret-name --from-literal=$key=$value
+kubectl create secret generic $secret-name --from-file=<path-to-file>
 
 
 IMPERATIVE EXAMPLE !!!!
@@ -81,4 +94,15 @@ kubectl create deployment webapp --image=kodekloud/webapp-color --replicas=3 --d
 kubectl run custom-nginx --image=nginx --port=8080  - create nginx pod and expose on port 8080 
 kubectl create ns dev-ns - create namespace called dev-ns
 kubectl scale deployment nginx --replicas=4 - scale replias of deployment called nginx
-kubectl expose pod redis --port=6379 --name redis-service --dry-run=client -o yaml - Create a Service named redis-service of type ClusterIP to expose pod redis on port 6379
+kubectl expose pod redis --port=6379 --name redis-service --dry-run=client -o yaml - Create a Service named redis-service of type ClusterIP to expose pod redis on port 
+kubectl create configmap app-config --from-literal=APP_COLOR=blue
+
+
+
+
+help
+kubectl run --help - shows examples of command
+kubectl set --help - shows examples of command
+kubectl create --help - shows examples of command
+kubectl create secret generic --help - show examples of command
+kubectl create secret generic -h
