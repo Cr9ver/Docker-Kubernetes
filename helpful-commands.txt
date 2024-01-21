@@ -71,6 +71,10 @@ taint effects - NoSchedule
 
 ### nodes
 kubectl label nodes $node-name $key=$value - command to label nodes
+kubectl drain $node - drain node of applications
+kubectl cordon $node - marks a node unscheduable
+kubectl uncordon $node - marks node scheduable
+kubectl drain $node --ignore-daemonsets - drain node but ignore daemonsets
 
 IMPERATIVE kubectl commands 
 kubectl run nginx --image=nginx --dry-run=client -o yaml - Generate POD Manifest YAML file (-o yaml). Don't create it(--dry-run)
@@ -98,9 +102,14 @@ kubectl expose pod redis --port=6379 --name redis-service --dry-run=client -o ya
 kubectl create configmap app-config --from-literal=APP_COLOR=blue
 
 
+### kubeadm
+# remember to upgrade kubeadm tool (apt-get upgrade -y kubeadm=$version) #ensure to drain nodes before upgrade
+kubeadm upgrade plan - gives plan of cluster upgrade
+kubeadm upgrade apply $version - apply changes to specific version 
+apt-get upgrade -y kublet=$version - upgrade kublet version (run systemctl restart kublet after)
+kubeadm upgrade node config --kublet-version $version
 
-
-help
+###help
 kubectl run --help - shows examples of command
 kubectl set --help - shows examples of command
 kubectl create --help - shows examples of command
