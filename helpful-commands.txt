@@ -59,6 +59,8 @@ kubectl describe secrets - describe secret
 kubectl get secrets - view secrets
 kubectl get secret $secret-name -o yaml - view secret value
 kubectl exec -it $podname sh - log into pod
+kubectl config view - displays info of kubeconfig file to terminal
+
 
 ###taint
 kubectl taint nodes $node-name key=value:taint-effect - command to taint node
@@ -115,3 +117,19 @@ kubectl set --help - shows examples of command
 kubectl create --help - shows examples of command
 kubectl create secret generic --help - show examples of command
 kubectl create secret generic -h
+etcdctl snapshot save -h - see available commands and shows options
+etcdctl snapshot restore -h - see available commands and shows options
+
+
+###backup (required to take backup on control pane node)
+kubectl get all --all-namespaces -o yaml > $filename.yaml
+
+export ETCDCTL_API=3 - sets etcd version to version 3 
+
+### ETCD
+etcd member list - view members of etcd cluster
+
+
+
+# context
+kubectl config use-context $cluster - switch between contexts for clusters (contexts is basically working environment for each cluster)
