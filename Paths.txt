@@ -1,2 +1,6 @@
 Kubelet config path
 /vat/lib/kubelet
+
+
+view info about lube api-server
+/etc/kubernetes/manifest/kube-apiserver.yaml

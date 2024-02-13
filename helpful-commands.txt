@@ -9,6 +9,9 @@ docker exec -it #containerid $command : execute command on the container
 docker run -it $containername sh - start up conatiner and attach shell 
 docker build -f $filename :  for specifying docker file to be built
 docker logs $container - view docker logs
+docker run --cap-add=$permission $image - add linux permissions to container
+docker run --cap-drop=$permission $image - remove linux permissions from container
+docker run --privileged $image - add all permissions to conatiner
 
 
 # Docker Compose
@@ -60,7 +63,15 @@ kubectl get secrets - view secrets
 kubectl get secret $secret-name -o yaml - view secret value
 kubectl exec -it $podname sh - log into pod
 kubectl config view - displays info of kubeconfig file to terminal
-
+kubectl config view --kubeconfig=$CustomConfigFile - display info about custom config 
+kubectl config use-context $user@cluster - change kubeconfig context
+kubectl config --kubeconfig=/root/my-kube-config use-context research - use context from config file 
+kubectl config --kubeconfig=/root/my-kube-config current-context -view current context from file
+kubectl get $0bject -A --no-headers | wc -l - get the exact number of objects that exist without adding header
+kubectl api-resources --namespaced=true - view namespaced resources
+kubectl api-resources --namespaced=true - view non-namespaced resources
+kubectl api-resources - view all info about objects including shortnames 
+kubectl delete pod $podname --force - force deletion of pod
 
 ###taint
 kubectl taint nodes $node-name key=value:taint-effect - command to taint node
@@ -119,6 +130,7 @@ kubectl create secret generic --help - show examples of command
 kubectl create secret generic -h
 etcdctl snapshot save -h - see available commands and shows options
 etcdctl snapshot restore -h - see available commands and shows options
+kubectl create role -h - see available commands and show options
 
 
 ###backup (required to take backup on control pane node)
@@ -133,3 +145,27 @@ etcd member list - view members of etcd cluster
 
 # context
 kubectl config use-context $cluster - switch between contexts for clusters (contexts is basically working environment for each cluster)
+
+## RBAC (Role Based Access Control)
+kubectl get roles - view roles
+kubectl get rolebindings - view role bindings 
+kubectl describe role $rolename - view details about role
+kubectl describe rolebinding $rolebinding - view details about rolebinding 
+kubectl auth can-i $action - check if you have permissions to perform actions 
+kubectl auth can-i $action --as $user - check if specific user can perform actions 
+kubectl get clusterrole - view cluster roles
+kubectl get clusterrolebinding -view ClusterRoleBinding
+
+
+### Service account
+kubectl create serviceaccount $accountname - to create service account 
+kubectl get serviceaccount - view service account
+kubectl create token $serviceaccount - create token for specific servcie account
+
+
+example of RBAC
+kubectl auth can-i create deployments - check if current user can create deployments
+kubectl auth can-i delete nodes - check if current user can delete nodes
+kubectl auth can-i create deployments --as dev-user - check if dev user can create deployments
+kubectl auth can-i create deployments --as dev-user --namespace test - check if dev-user can create deployments in test namespace
+kubectl auth can-i list pods --as dev-user - check if dev user can list pods
