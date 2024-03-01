@@ -12,6 +12,7 @@ docker logs $container - view docker logs
 docker run --cap-add=$permission $image - add linux permissions to container
 docker run --cap-drop=$permission $image - remove linux permissions from container
 docker run --privileged $image - add all permissions to conatiner
+docker volume create $volume_name - create docker volume
 
 
 # Docker Compose
@@ -72,6 +73,7 @@ kubectl api-resources --namespaced=true - view namespaced resources
 kubectl api-resources --namespaced=true - view non-namespaced resources
 kubectl api-resources - view all info about objects including shortnames 
 kubectl delete pod $podname --force - force deletion of pod
+kubectl get $object $object name -o yaml - view yaml format used to create object
 
 ###taint
 kubectl taint nodes $node-name key=value:taint-effect - command to taint node
@@ -169,3 +171,7 @@ kubectl auth can-i delete nodes - check if current user can delete nodes
 kubectl auth can-i create deployments --as dev-user - check if dev user can create deployments
 kubectl auth can-i create deployments --as dev-user --namespace test - check if dev-user can create deployments in test namespace
 kubectl auth can-i list pods --as dev-user - check if dev user can list pods
+
+### network policy
+kubectl get networkpolicy - to view available network policies
+kubectl get netpol - to view available network policies
