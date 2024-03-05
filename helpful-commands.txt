@@ -74,6 +74,8 @@ kubectl api-resources --namespaced=true - view non-namespaced resources
 kubectl api-resources - view all info about objects including shortnames 
 kubectl delete pod $podname --force - force deletion of pod
 kubectl get $object $object name -o yaml - view yaml format used to create object
+kubectl get $object,$object - view multiple objects at the same time
+kubect get storageclass - view storage classes
 
 ###taint
 kubectl taint nodes $node-name key=value:taint-effect - command to taint node

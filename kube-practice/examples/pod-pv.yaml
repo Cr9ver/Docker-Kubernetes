@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: webapp
+  name: webapp
+spec:
+  volumes:
+  - name: vol
+    hostPath:
+      path: /var/log/webapp
+  containers:
+  - image: kodekloud/event-simulator
+    name: webapp
+    resources: {}
+    volumeMounts:
+    - name: vol
+      mountPath: /log
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+
+
+# Example with PVC as volume
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: webapp
+  name: webapp
+spec:
+  volumes:
+  - name: vol
+    persistentVolumeClaim:
+      claimName: claim-log-1
+  containers:
+  - image: kodekloud/event-simulator
+    name: webapp
+    resources: {}
+    volumeMounts:
+    - name: vol
+      mountPath: /log
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
