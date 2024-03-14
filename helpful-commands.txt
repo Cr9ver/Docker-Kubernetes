@@ -177,3 +177,7 @@ kubectl auth can-i list pods --as dev-user - check if dev user can list pods
 ### network policy
 kubectl get networkpolicy - to view available network policies
 kubectl get netpol - to view available network policies
+
+#ingress
+kubectl create ingress $ingress-name -n $namespace --rule="$path=#servicename:$port"
+kubectl create ingress ingress-watch -n app-space --rule"/wear=wear-service:8080" --dry-run=client -o yaml > ingress.yaml (create ingress imperatively and output to yaml file)
